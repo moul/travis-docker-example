@@ -11,3 +11,5 @@ install:
 script:
   - ./run docker info
   - ./run docker run busybox date
+  - ./run docker-compose build
+  - ./run docker-compose run aaa date
