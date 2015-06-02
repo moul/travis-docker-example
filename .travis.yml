@@ -1,0 +1,13 @@
+env:
+  global:
+  - BRANCH=master
+  - QUIET=0
+
+sudo: true
+
+install:
+  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+
+script:
+  - ./run docker info
+  - ./run docker run busybox date
