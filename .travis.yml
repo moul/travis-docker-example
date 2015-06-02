@@ -1,7 +1,11 @@
 env:
   global:
-  - BRANCH=master
-  - QUIET=0
+    - QUIET=0
+  matrix:
+    - BRANCH=master
+    - BRANCH=master DOCKER_STORAGE_DRIVER=aufs
+    - BRANCH=master DOCKER_STORAGE_DRIVER=devicemapper
+    - BRANCH=master DOCKER_STORAGE_DRIVER=btrfs
 
 sudo: true
 
