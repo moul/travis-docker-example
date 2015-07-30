@@ -3,7 +3,9 @@ env:
     - QUIET=0
     - UML_FIG=0
     - UML_DOCKERCOMPOSE=1
-  matrix:
+
+matrix:
+  env:
     - BRANCH=master
     - BRANCH=stable
     - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=aufs
