@@ -24,20 +24,20 @@ env:
     # Using Docker from get.docker.com
     - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=get.docker.com
 
-    allow_failures:
-      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=btrfs
-      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=overlay
-      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=aufs
-      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=btrfs
-      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=overlay
+  allow_failures:
+    - env: BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=btrfs
+    - env: BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=overlay
+    - env: BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=aufs
+    - env: BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=btrfs
+    - env: BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=overlay
 
-      # Using version from get.docker.com
-      - BRANCH=master                                                                DOCKER_VERSION=get.docker.com
-      - BRANCH=stable                                                                DOCKER_VERSION=get.docker.com
-      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=aufs            DOCKER_VERSION=get.docker.com
-      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
-      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=get.docker.com
-      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
+    # Using version from get.docker.com
+    - env: BRANCH=master                                                                DOCKER_VERSION=get.docker.com
+    - env: BRANCH=stable                                                                DOCKER_VERSION=get.docker.com
+    - env: BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=aufs            DOCKER_VERSION=get.docker.com
+    - env: BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
+    - env: BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=get.docker.com
+    - env: BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
 
 
 sudo: true
