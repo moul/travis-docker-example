@@ -12,7 +12,7 @@ env:
     - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=devicemapper
     - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=vfs
 
-    # same as above with version 1.6.2
+    # Using Docker 1.6.2
     - BRANCH=master                                                                DOCKER_VERSION=1.6.2
     - BRANCH=stable                                                                DOCKER_VERSION=1.6.2
     - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=aufs            DOCKER_VERSION=1.6.2
@@ -21,28 +21,31 @@ env:
     - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=1.6.2
     - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=1.6.2
 
-    # same as above with version from get.docker.com
-    - BRANCH=master                                                                DOCKER_VERSION=get.docker.com
-    - BRANCH=stable                                                                DOCKER_VERSION=get.docker.com
-    - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=aufs            DOCKER_VERSION=get.docker.com
-    - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
-    - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=get.docker.com
-    - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
+    # Using Docker from get.docker.com
     - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=get.docker.com
 
-    # broken matrix
-    - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=btrfs
-    - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=overlay
-    - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=aufs
-    - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=btrfs
-    - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=overlay
+    allow_failures:
+      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=btrfs
+      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=overlay
+      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=aufs
+      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=btrfs
+      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=overlay
 
+      # Using version from get.docker.com
+      - BRANCH=master                                                                DOCKER_VERSION=get.docker.com
+      - BRANCH=stable                                                                DOCKER_VERSION=get.docker.com
+      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=aufs            DOCKER_VERSION=get.docker.com
+      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
+      - BRANCH=develop DOCKER_BACKEND_FS=tmpfs DOCKER_STORAGE_DRIVER=vfs             DOCKER_VERSION=get.docker.com
+      - BRANCH=develop DOCKER_BACKEND_FS=host  DOCKER_STORAGE_DRIVER=devicemapper    DOCKER_VERSION=get.docker.com
 
 
 sudo: true
 
+
 install:
   - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+
 
 script:
   - df -h
