@@ -6,4 +6,4 @@ The project uses travis environment matrix to use different flavors or versions 
 
 See [travis.yml](https://github.com/moul/travis-docker-example/blob/master/.travis.yml) for more info.
 
-Current build status: [![Build Status](https://travis-ci.org/moul/travis-docker-example.svg?branch=master)](https://travis-ci.org/moul/travis-docker-example)
+Current build status: [![Build Status](https://travis-ci.org/moul/travis-docker-example.svg?branch=master)](https://travis-ci.org/moul/travis-docker-example) [![GuardRails badge](https://badges.production.guardrails.io/moul/travis-docker-example.svg)](https://www.guardrails.io)
